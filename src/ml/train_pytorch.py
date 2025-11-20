@@ -68,7 +68,9 @@ class FraudDetectionMLP(nn.Module):
         x = self.dropout2(x)
         x = F.relu(self.fc3(x))
         x = self.fc4(x)
-        return F.softmax(x, dim=-1)
+        # Return logits (not softmax) for CrossEntropyLoss
+        # Skorch applies softmax internally in predict_proba()
+        return x
 
 
 def train_pytorch_model():

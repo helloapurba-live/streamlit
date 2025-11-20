@@ -30,7 +30,7 @@ def objective(trial, X_train, y_train):
     hidden_dim2 = trial.suggest_int('hidden_dim2', 16, 64)
     hidden_dim3 = trial.suggest_int('hidden_dim3', 8, 32)
     dropout = trial.suggest_float('dropout', 0.1, 0.5)
-    lr = trial.suggest_loguniform('lr', 1e-4, 1e-2)
+    lr = trial.suggest_float('lr', 1e-4, 1e-2, log=True)  # Updated from deprecated suggest_loguniform
     batch_size = trial.suggest_categorical('batch_size', [64, 128, 256])
 
     # Create model

@@ -754,8 +754,11 @@ def page_batch_processing():
 
             # Wait before next poll (only if not completed)
             if status_data and status_data['status'] not in ['completed', 'failed']:
-                time.sleep(5)
                 poll_count += 1
+                # Use Streamlit's auto-refresh instead of blocking sleep
+                # Note: In production, consider using st.experimental_rerun() with a button
+                # or JavaScript-based polling for better UX
+                time.sleep(5)  # Brief pause, but UI will be frozen during this time
             else:
                 break
 
