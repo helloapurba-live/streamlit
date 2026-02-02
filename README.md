@@ -47,13 +47,21 @@ The application is structured into **8 different modules**, covering the entire 
 
 ## 🏃‍♂️ Usage
 
+### Web App
 Run the Streamlit application:
 
 ```bash
 streamlit run app.py
 ```
 
-Navigate through the pages using the Sidebar on the left.
+### REST API
+Start the FastAPI server:
+
+```bash
+uvicorn api:app --reload
+```
+
+Then visit [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) for the interactive Swagger UI.
 
 ## 📦 Dependencies
 
@@ -64,6 +72,20 @@ Navigate through the pages using the Sidebar on the left.
 *   **Matplotlib/Seaborn**: Static Statistical Plots
 *   **NetworkX**: Graph & Network Algorithms
 *   **Scipy**: Scientific Computing (required for adjacency matrices)
+
+## 🐳 Docker Support
+
+Run the entire stack (Frontend + Backend) with a single command:
+
+```bash
+docker-compose up --build
+```
+
+## 💬 Features
+
+*   **Chat with Data**: Ask questions in plain English on Page 9. Requires an OpenAI API Key.
+*   **Production Tests**: Run `pytest` to verify reliability.
+*   **CI/CD**: GitHub Actions workflow included in `.github/workflows/ci.yml`.
 
 ## 🤝 Contributing
 
