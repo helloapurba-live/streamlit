@@ -1,10 +1,21 @@
 import dash
 from dash import html, dcc, callback, Input, Output, State
 import dash_bootstrap_components as dbc
-from pandasai import SmartDataframe
-from pandasai.llm import OpenAI
 from utils import load_data
 import os
+
+# Try importing pandasai, handle gracefully if unavailable
+try:
+    from pandasai import SmartDataframe
+    try:
+        from pandasai.llm import OpenAI
+    except ImportError:
+        from pandasai.llm.openai import OpenAI
+    PANDASAI_AVAILABLE = True
+    PANDASAI_ERROR = None
+except Exception as e:
+    PANDASAI_AVAILABLE = False
+    PANDASAI_ERROR = str(e)
 
 dash.register_page(__name__, name='💬 Chat with Data', order=9)
 
@@ -42,6 +53,17 @@ layout = dbc.Container([
     prevent_initial_call=True
 )
 def process_chat(n, prompt, api_key):
+    if not PANDASAI_AVAILABLE:
+        return dbc.Alert(
+            [
+                html.H4("PandasAI Unavailable", className="alert-heading"),
+                html.P("The Chat feature requires PandasAI library."),
+                html.Hr(),
+                html.P(f"Error: {PANDASAI_ERROR}", className="mb-0")
+            ], 
+            color="warning"
+        )
+    
     if not prompt or not api_key:
         return dbc.Alert("Please enter both an API Key and a Question.", color="warning")
     

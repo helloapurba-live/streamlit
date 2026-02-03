@@ -2,10 +2,15 @@ import dash
 from dash import html, dcc, callback, Input, Output
 import dash_bootstrap_components as dbc
 import plotly.graph_objects as go
-import networkx as nx
 from sklearn.neighbors import kneighbors_graph
 from utils import load_data
 import numpy as np
+
+try:
+    import networkx as nx
+    NETWORKX_AVAILABLE = True
+except ImportError:
+    NETWORKX_AVAILABLE = False
 
 dash.register_page(__name__, name='🔗 KNN Network', order=6)
 
@@ -36,6 +41,16 @@ layout = dbc.Container([
     Input('knn-k', 'value')
 )
 def update_knn(k):
+    if not NETWORKX_AVAILABLE:
+        fig = go.Figure()
+        fig.add_annotation(
+            text="NetworkX library not available.<br>This page requires networkx for graph visualization.",
+            xref="paper", yref="paper",
+            x=0.5, y=0.5, showarrow=False,
+            font=dict(size=16, color="red")
+        )
+        return fig
+    
     # Construct Graph
     A = kneighbors_graph(X, k, mode='connectivity', include_self=False)
     G = nx.from_scipy_sparse_array(A)

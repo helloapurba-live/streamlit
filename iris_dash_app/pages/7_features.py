@@ -2,8 +2,13 @@ import dash
 from dash import html, dcc, callback, Input, Output
 import dash_bootstrap_components as dbc
 import plotly.graph_objects as go
-import networkx as nx
 from utils import load_data
+
+try:
+    import networkx as nx
+    NETWORKX_AVAILABLE = True
+except ImportError:
+    NETWORKX_AVAILABLE = False
 
 dash.register_page(__name__, name='🕸️ Feature Network', order=7)
 
