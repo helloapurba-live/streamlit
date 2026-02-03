@@ -21,28 +21,23 @@ A comprehensive guide to the Dual-Framework Iris Machine Learning Application Su
 
 You have **TWO production-ready applications** for Iris dataset analysis:
 
-| Feature | Streamlit | Dash |
-|---------|-----------|------|
-| **Port** | 8501 | 8050 |
-| **Framework** | Streamlit | Plotly Dash |
-| **Pages** | 11 | 11 |
-| **Best For** | Rapid prototyping, Data science demos | Enterprise dashboards, Custom layouts |
-| **Styling** | Built-in themes | Bootstrap components |
+| Feature | Streamlit | Dash | Reflex |
+|---------|-----------|------|--------|
+| **Port** | 8501 | 8050 | 3000 |
+| **Framework** | Streamlit | Plotly Dash | Reflex (React) |
+| **Pages** | 11 | 11 | 11 |
+| **Best For** | Rapid prototyping | Enterprise dashboards | Modern web apps |
+| **Styling** | Built-in themes | Bootstrap | Chakra UI |
 
 ### Architecture
 ```
 iris-ml-suite/
 ├── iris_streamlit_app/     # Streamlit version
-│   ├── pages/              # 11 interactive pages
-│   ├── api.py              # FastAPI backend
-│   ├── Dockerfile          # Container config
-│   └── main.tf             # Terraform (AWS)
-│
-└── iris_dash_app/          # Dash version
+├── iris_dash_app/          # Dash version
+└── iris_reflex_app/        # Reflex version
     ├── pages/              # 11 interactive pages
-    ├── api.py              # Shared backend
-    ├── utils.py            # Shared utilities
-    └── README.md           # Quick start guide
+    ├── state.py            # Reactive state
+    └── utils.py            # Shared utilities
 ```
 
 ---
