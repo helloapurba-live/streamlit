@@ -1,0 +1,14 @@
+dash
+dash-bootstrap-components
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+plotly
+networkx
+scipy
+sqlalchemy
+pandasai
+openai
+evidently

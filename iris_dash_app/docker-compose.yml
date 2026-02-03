@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  dash-app:
+    build: .
+    container_name: iris-dash-frontend
+    ports:
+      - "8050:8050"
+    volumes:
+      - .:/app
+    command: python app.py
+    networks:
+      - iris-network
+
+  fastapi-server:
+    build: .
+    container_name: iris-dash-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: uvicorn api:app --host 0.0.0.0 --port 8000 --reload
+    networks:
+      - iris-network
+
+networks:
+  iris-network:
+    driver: bridge

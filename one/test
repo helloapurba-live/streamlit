@@ -1,0 +1,12 @@
+| Item         | Requirement                                                                                                   |
+| ------------ | ------------------------------------------------------------------------------------------------------------- |
+| Role         | PhD in Statistics + Senior ML/DL + MLOps/DLOps engineer                                                       |
+| Domain       | Bank AML / Fraud detection, **multiclass** classification, extreme class imbalance                            |
+| Data         | **Synthetic model probabilty as output **: tabular features + free-text transaction review (NLP)                     |
+| Techniques   | Comprehensive Drift Detection Methods Master Reference Complete Drift Types, Methods & Algorithms Taxonomy                               |
+| Scope        | End-to-end: data → EDA → feature engineering → (validation + tracking)         |Comprehensive Drift Detection Metrics Across Open-Source Libraries
+| Models       | At least **100 variants/experiments** of|
+| Environment  | Local **Windows 11** laptop, Python, Jupyter notebook, **PyPI** libraries only                                |
+| Focus        | Concept clarity, “teach me” style, step-by-step, explain what’s happening in code                             |
+| Validation   | Extreme imbalance handling, AML-specific validation (per-class metrics, risk analysis, thresholding)          |
+| Output Style | Step-by-step, tables (STEP / PURPOSE / TOOLS), markdown explanations, code + narrative                        |
